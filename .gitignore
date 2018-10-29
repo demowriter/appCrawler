@@ -1,0 +1,7 @@
+mapping_dict_file.txt
+*.pyc
+*.DS_Store
+pic/*
+!pic/Readme
+.idea
+*.html

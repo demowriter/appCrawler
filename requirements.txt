@@ -1,0 +1,4 @@
+lxml==3.8.0
+selenium==3.8.0
+Appium_Python_Client==0.28
+PyYAML==3.13

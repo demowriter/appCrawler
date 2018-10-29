@@ -1,0 +1,98 @@
+init_craw:
+ package_name: com.cootek.smartdialer
+ activity_name: .v6.TPDTabActivity
+ main_page_xpath: .//android.support.v4.view.ViewPager[descendant::*[@text='通话'] and descendant::*[@text='联系人']]
+ access_main_page: .//android.widget.RadioGroup[preceding-sibling::*[1][@class='android.support.v4.view.ViewPager']]/android.widget.RelativeLayout[1]
+
+xpath_unRecyclerView_element: .//*[string-length(@text)>0 or string-length(@resource-id)>0][not(descendant::*)][not(@class='android.view.View') and not(@class='android.widget.EditText')][not(ancestor::*[contains(@class,'ListView') or contains(@class,'RecyclerView')])]
+
+xpath_listView_element: .//*[contains(@class,'ListView') or contains(@class,'RecyclerView')]//*[contains(@class,'Layout')]//*[string-length(@text)>0 or string-length(@resource-id)>0][not(descendant::*)][not(@class='android.view.View') and not(@class='android.widget.EditText')][not(@class=following-sibling::*[string-length(@text)>0 or string-length(@resource-id)>0]/@class)]
+
+traverse_shot_page: true
+
+traverse_max_time: 7200
+
+node_max_error_time: 3
+
+traverse_depth: 8
+
+gray_activity_max_traverse: 1
+
+gray_activity_max_traverse_itself: 20
+
+white_xpath:
+
+element_min_height: 50
+
+element_min_width: 50
+
+white_activity:
+ - .v6.TPDTabActivity
+ - .settingspage.SettingsCommonActivity
+
+black_activity:
+ - voip
+ - .feeds.RedpacketAdDialogActivity
+ - baidu
+ - feedsNew
+ - touchlife
+
+
+judge_black_page_by_xpath:
+
+
+black_text:
+ - L
+ - 退出登录
+ - 取消
+ - 正在加载
+ - 生活
+ - 领红包
+ - 招聘
+ - 广告
+ - u
+ - 请稍候
+black_id:
+
+black_xpath:
+ - .//android.widget.RadioGroup[preceding-sibling::*[1][@class='android.support.v4.view.ViewPager']]/android.widget.RelativeLayout[1]/android.widget.ImageView
+
+
+need_scrolled_page_xpath:
+ - .//android.support.v7.widget.RecyclerView[descendant::android.widget.TextView[@text='现金任务']][descendant::android.widget.TextView[@text='金币任务']][descendant::android.widget.TextView[@text='立即赚钱']]
+
+
+caputure_onlyone_on_whitePage:
+ - .//*[contains(@text,'全键盘') or contains(@text,'9键')][following::*[contains(@text,'粘贴')]]
+ - .//*[@text='老乡动态'][preceding::*[@text='老乡圈']][following::*[@text='附近老乡']]
+ - .//*[@text='聊天'][following::*[@text='找人聊聊']][following::*[@text='服务号']]
+ - .//*[@text='推荐'][following::*[@text='赚钱']]
+
+
+illegal_xpath_handle_by_monitor:
+ - .//*[@text='S'][not(following::*)][not(child::*)][preceding::*[contains(@text,'广')][contains(@text,'告')]]
+ - .//*[@index][not(following::*)][not(child::*)][preceding::*[starts-with(@text,'您已成功连接')]]
+ - .//*[@text='S'][not(following::*)][not(child::*)][preceding::*[contains(@text,'点击领取')]]
+ - .//*[@text='我知道了'][not(following::*)][not(child::*)][preceding::*[contains(@text,'广')][contains(@text,'告')]]
+ - .//android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.TextView[@index='1'][preceding-sibling::android.widget.RelativeLayout[descendant::*[@text='查看详情'] and descendant::*[contains(@text,'广')]]]
+ - .//*[@text='f'][following::*[@text='立即升级']]
+ - .//android.view.ViewGroup/android.widget.ImageView[not(following::*)][not(child::*)][preceding-sibling::*[@text='去领钱']][preceding-sibling::*[contains(@text,'加成')]]
+ - .//android.view.View[not(following::*)][@content-desc='S'][preceding::*[contains(@content-desc,'奖励大升级')]]
+ - .//android.widget.TextView[@text='做任务赚零钱'][preceding::android.widget.TextView[contains(@text,'签到成功')]]
+ - .//*[@text='我知道了'][not(following::*)][preceding::*[contains(@text,'签到奖励')]]
+ - .//*[contains(@text,'允许') or contains(@text,'确定')][@resource-id='android:id/button1'][preceding::*[contains(@text,'触宝电话') or contains(@text,'Appium Settings')]]
+ - .//*[@text='默认使用该应用打开'][@checked='false'][following::*[@text='触宝电话']][following::*[@text='触宝']]
+ - .//android.widget.TextView[@text='手机'][preceding::android.widget.TextView[@text='存储联系人到']]
+ - .//*[@text='触宝电话'][preceding::*[@text='默认使用该应用打开']][preceding::*[@text='触宝']]
+ - .//*[@text='取消'][preceding::*[contains(@text,'触宝提示')]][preceding::*[contains(@text,'不支持拨打免费电话')]]
+ - .//*[@text='确定'][preceding::*[contains(@text,'触宝提示')]][preceding::*[contains(@text,'双方都安装触宝电话')]]
+ - .//*[@text='退出'][following-sibling::*[@text='继续完成']][preceding::*[contains(@text,'触宝提示')]]
+ - .//android.widget.FrameLayout[preceding::*[@text='专线']][following::*[@text='键盘']]
+function:
+  - def handle_red_packet(self):os.popen("adb -s %s shell am start -W -S com.cootek.smartdialer/.v6.TPDTabActivity"%self.udid);self.driver.find_element_by_xpath(".//android.widget.RadioGroup[preceding-sibling::*[1][@class='android.support.v4.view.ViewPager']]/android.widget.RelativeLayout[2]")
+  - def click_pause_button(self):self.driver.find_element_immediately_by_xpath(".//android.view.ViewGroup[descendant::*[@text='o'] and descendant::*[@text='D']]").click()
+
+
+illegal_xpath_handle_yourself:
+  .//android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ImageView[not(following::*)][not(child::*)]: handle_red_packet
+  .//android.view.ViewGroup[descendant::*[@text='o'] and descendant::*[@text='D']]: click_pause_button

@@ -1,0 +1,22 @@
+{
+    "xpath": [
+        ".//*[@text='S'][not(following::*)][not(child::*)][preceding::*[contains(@text,'广')][contains(@text,'告')]]",
+        ".//*[@index][not(following::*)][not(child::*)][preceding::*[starts-with(@text,'您已成功连接')]]",
+        ".//*[@text='S'][not(following::*)][not(child::*)][preceding::*[contains(@text,'点击领取')]]",
+        ".//*[@text='我知道了'][not(following::*)][not(child::*)][preceding::*[contains(@text,'广')][contains(@text,'告')]]",
+        ".//android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.TextView[@index='1'][preceding-sibling::android.widget.RelativeLayout[descendant::*[@text='查看详情'] and descendant::*[contains(@text,'广')]]]",
+        ".//*[@text='f'][following::*[@text='立即升级']]",
+        ".//android.view.ViewGroup/android.widget.ImageView[not(following::*)][not(child::*)][preceding-sibling::*[@text='去领钱']][preceding-sibling::*[contains(@text,'加成')]]",
+        ".//android.view.View[not(following::*)][@content-desc='S'][preceding::*[contains(@content-desc,'奖励大升级')]]",
+        ".//android.widget.TextView[@text='做任务赚零钱'][preceding::android.widget.TextView[contains(@text,'签到成功')]]",
+        ".//*[@text='我知道了'][not(following::*)][preceding::*[contains(@text,'签到奖励')]]",
+        ".//*[contains(@text,'允许') or contains(@text,'确定')][@resource-id='android:id/button1'][preceding::*[contains(@text,'触宝电话') or contains(@text,'Appium Settings')]]",
+        ".//*[@text='默认使用该应用打开'][@checked='false'][following::*[@text='触宝电话']][following::*[@text='触宝']]",
+        ".//android.widget.TextView[@text='手机'][preceding::android.widget.TextView[@text='存储联系人到']]",
+        ".//*[@text='触宝电话'][preceding::*[@text='默认使用该应用打开']][preceding::*[@text='触宝']]",
+        ".//*[@text='退出'][following-sibling::*[@text='继续完成']][preceding::*[contains(@text,'触宝提示')]]",
+        ".//*[@text='取消'][preceding::*[contains(@text,'触宝提示')]][preceding::*[contains(@text,'不支持拨打免费电话')]]",
+        ".//*[@text='确定'][preceding::*[contains(@text,'触宝提示')]][preceding::*[contains(@text,'双方都安装触宝电话')]]",
+        ".//android.widget.FrameLayout[preceding::*[@text='专线']][following::*[@text='键盘']]"
+    ]
+}
