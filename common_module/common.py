@@ -6,10 +6,6 @@ import os
 import logging
 dir_path=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))#工程根目录
 
-def push_handler_file(udid,handler_file_file_path):
-    os.popen("adb -s %s push %s /data/local/tmp/"%(udid,handler_file_file_path))
-    logging.info("导入处理弹框文件成功...")
-
 def install_uiautomator2_apk(udid):
     '''
     安装uiautomator2的apk包

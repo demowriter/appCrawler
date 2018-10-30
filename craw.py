@@ -288,7 +288,7 @@ class Graph(object):
             page_source_1 = page_source_2 or self._get_illegal_source()  # 在页面停止滑动前的信息
             time.sleep(0.5)
             page_source_2 = self._get_illegal_source()
-            if page_source_1 == page_source_2:
+            if page_source_2 and (page_source_1 == page_source_2):
                 return page_source_2
         return page_source_2
 
@@ -313,9 +313,11 @@ class Graph(object):
         :return:
         '''
         while True:
-            for each_xpath in illegal_xpath_handle_by_monitor:  # 遍历列出来的不合法xpath
-                if self.driver.judge_element_by_xpath(each_xpath, page_source):
+            for each_xpath in illegal_xpath_handle_by_monitor:  # 遍历列出来的不合法page_source xpath
+                element=self.driver.create_element_by_xpath(each_xpath, page_source)
+                if element:
                     logging.info("含有非法的illegal_xpath")
+                    element.click()
                     return False
             for each_xpath, handler_function_str in illegal_xpath_handle_yourself.items():
                 if self.driver.judge_element_by_xpath(each_xpath.encode("utf-8"), page_source):  # 如果配置该xpath
@@ -630,7 +632,3 @@ if __name__ == '__main__':
     finally:
         os.popen("adb -s %s shell am force-stop io.appium.uiautomator2.server" %device_udid)
         os.popen("adb -s %s shell am force-stop io.appium.android.ime" % device_udid)
-
-
-
-

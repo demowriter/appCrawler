@@ -12,7 +12,7 @@ import urllib2
 from functools import wraps
 from appium import webdriver
 from selenium.common.exceptions import WebDriverException,NoSuchElementException
-from common import install_uiautomator2_apk,push_handler_file
+from common import install_uiautomator2_apk
 from touchpal_element import WebElement,Touchpal_weblement
 import re
 import json
@@ -98,14 +98,6 @@ class Remote(webdriver.Remote):
         self.phone_size=[]
         phone_size_result = phone_size_pattren.findall(os.popen("adb -s %s shell wm size" % self.udid).read())[-1]
         self.phone_size.extend([int(phone_size_result[0]), int(phone_size_result[1])])
-        script_dir_path = os.path.dirname(os.path.abspath(__file__))  # touchpal_driver的根目录
-        ###########确保handler_popup_file中json对象正确否则抛出异常########
-        handler_popup_file_path=os.path.join(script_dir_path,"handler_popup_file.txt")
-        try:
-            json.load(open(handler_popup_file_path,"rb"))
-        except ValueError:
-            raise ValueError("handler_popup_file.txt中的json对象格式错误导致uiautomator2 server不能正确处理异常事件")
-        push_handler_file(udid,handler_popup_file_path)
         start_uiautomator2_server(udid,port,port)#Andorid启动uiautomator2 server
         desired_caps = {}
         desired_caps['platform'] = "LINUX"
