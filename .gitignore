@@ -5,5 +5,4 @@ pic/*
 !pic/Readme
 .idea
 *.html
-report/*
-!report/Readme
+report/*.html
