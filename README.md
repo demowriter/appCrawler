@@ -6,6 +6,7 @@ pip install -r requirements.txt   （注意python的版本用pip或者pip3）
 
 ## 2.修改config.yaml中的一些配置选项
 其中的一些配置可能您用不到，适当删除或添加，其中init_craw是要主要注意的。
+
 package_name：测试app的包名
 
 activity_name：启动activity的名称
