@@ -262,7 +262,7 @@ class Graph(object):
         except KeyboardInterrupt:
             logging.info("停止遍历....")
         finally:
-            cread_mind_report(self.traverse_track_record,"")
+            cread_mind_report(self.traverse_track_record,os.path.join(dir_path,"report"))
             return order
 
 

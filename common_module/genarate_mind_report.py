@@ -15,7 +15,7 @@ html_data = """
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>jsMind</title>
-    <link type="text/css" rel="stylesheet" href="http://10.0.20.2:8008/css/jsmind.css" />
+    <link type="text/css" rel="stylesheet" href="jsmind.css" />
     <style type="text/css">
            html
         {
