@@ -1,6 +1,6 @@
 # appCrawler
 
-#使用方法：
+# 使用方法：
 ## 1. 首先安装依赖的几个包
 pip install -r requirements.txt   （注意python的版本用pip或者pip3）
 
@@ -19,4 +19,4 @@ access_main_page：重启app后如何进入主页
 
 # 运行
 
-python craw.py 就可以crtl+c或者遍历完会有相关截图和生成思维导图
+python craw.py crtl+c或者遍历完会有相关截图和生成思维导图
