@@ -616,10 +616,13 @@ class Graph(object):
 
 
 if __name__ == '__main__':
-    device_udid = "a2eae255"
-    if device_udid not in os.popen("adb devices").read():
-        raise RuntimeError("udid:%s不存在"%device_udid)
+    device_pattern=re.compile(r"(\S+)\s+device[^s]")
+    devices_message=os.popen("adb devices").read()
+    search_result=device_pattern.search(devices_message)
+    if not search_result:
+        raise RuntimeError("没有发现可运行的Android信息...")
     else:
+        device_udid =search_result.group(1)
         install_uiautomator2_apk(device_udid)
         install_unicode_apk(device_udid)
         os.popen("adb -s %s shell ime enable io.appium.android.ime/.UnicodeIME"%device_udid)
