@@ -22,6 +22,8 @@ access_main_page：重启app后如何进入主页
 
 如果你的app是固定的启动到某个页面可不必填写！
 
+然后config.yaml中的xpath我写的比较复杂，因为我们的app会被压缩处理即id是动态变化的，所有的xpath没有用id,这一点如果id是固定的没有必要这么复杂
+
 # 运行
 
 python craw.py crtl+c或者遍历完会有相关截图和生成思维导图
